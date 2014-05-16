@@ -1,0 +1,41 @@
+<%= form_for(@user) do |u| %>     # formulario para ser usado por la estructura user
+				  # dentro del form llamaremos u al usuario especifico.
+	<div class='field'>
+		<%= u.label :nombre %>
+		<%= u.text_field :nombre %>
+	</div>
+	<div class='field'>
+		<%= u.label :bio %>
+		<%= u.text_area :bio, :cols=>30, rows:20 %>
+	</div>
+	<div class='field'>
+		<%= u.label :nombre %>
+		<%= u.check_box :nombre, checked: "checked" %>
+	</div>
+	<div class='field'>
+		<% nombres = {'Marcos Uriel' => 'Uri', 'Codigo facilito' => 'CF' , 'Dtutor' => 'Dt'} %>
+		<fieldset>
+			<% lista = nombres.sort %>
+			<% lista.each do |nombre| %>
+				<%= u.radio_button :nombre, nombre[1] %>
+				<label for="<%= nombre[1] %>"><%= nombre[0] %></label>  
+			<% end %>
+		</fieldset>
+	</div>
+	<div class='field'>
+		<% nombres = {'Marcos Uriel' => 'Uri', 'codigo facilito' => 'CF' , 'Dtutor' => 'Dt'} %>
+			<%= u.label :siglas %>
+			<% lista = nombres.values.sort %>
+			<%= u.select :nombre, lista, selected: 'Dt' %>
+		
+	</div>
+	<div class='field'>
+		<%= u.label :birthday %>
+		<%= u.date_select :birthday, start_year:1970, end_year:2000 %>
+	</div>
+	<div class='field'>
+		<%= u.label :worktime %>
+		<%= u.time_select :worktime %>
+	</div>
+
+<% end %>
